@@ -8,10 +8,12 @@ namespace InterkeyGenerator
     {
         static void Main(string[] args)
         {
+            string publicKey;
+            string password;
             while (true)
             {
                 Console.WriteLine("Please enter your public key");
-                string publicKey = Console.ReadLine();
+                publicKey = Console.ReadLine();
                 Console.WriteLine("Please enter the public key again to make sure");
                 string _publicKey = Console.ReadLine();
                 if (publicKey != _publicKey)
@@ -19,8 +21,12 @@ namespace InterkeyGenerator
                     Console.WriteLine("You entered 2 different public keys.\n\n");
                     continue;
                 }
+                break;
+            }
+            while (true)
+            {
                 Console.WriteLine("Please enter your password");
-                string password = Console.ReadLine();
+                password = Console.ReadLine();
                 Console.WriteLine("Please enter the password again to make sure");
                 string _password = Console.ReadLine();
                 if (password != _password)
@@ -28,12 +34,14 @@ namespace InterkeyGenerator
                     Console.WriteLine("You entered 2 different passwords.\n\n");
                     continue;
                 }
-                Console.WriteLine("\n\nHere is the interkey you need to copy and give to the bot:");
-                Console.WriteLine(GenerateInterkey(publicKey, password));
-                Console.WriteLine("Enter to quit");
-                Console.Read();
-                Environment.Exit(0);
+                break;
             }
+            string interkey = GenerateInterkey(publicKey, password);
+            Console.WriteLine("\n\nHere is the interkey you need to copy and give to the bot:");
+            Console.WriteLine(interkey);
+            Console.WriteLine("Enter to quit");
+            Console.Read();
+            Environment.Exit(0);
         }
 
         static string GenerateInterkey(string publicKey, string password)
