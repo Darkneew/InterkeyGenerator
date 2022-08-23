@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -8,17 +8,17 @@ namespace InterkeyGenerator
     {
         static void Main(string[] args)
         {
-            string publicKey;
+            string privateKey;
             string password;
             while (true)
             {
-                Console.WriteLine("Please enter your public key");
-                publicKey = Console.ReadLine();
-                Console.WriteLine("Please enter the public key again to make sure");
-                string _publicKey = Console.ReadLine();
-                if (publicKey != _publicKey)
+                Console.WriteLine("Please enter your private key");
+                privateKey = Console.ReadLine();
+                Console.WriteLine("Please enter the private key again to make sure");
+                string _privateKey = Console.ReadLine();
+                if (privateKey != _privateKey)
                 {
-                    Console.WriteLine("You entered 2 different public keys.\n\n");
+                    Console.WriteLine("You entered 2 different private keys.\n\n");
                     continue;
                 }
                 break;
@@ -36,7 +36,7 @@ namespace InterkeyGenerator
                 }
                 break;
             }
-            string interkey = GenerateInterkey(publicKey, password);
+            string interkey = GenerateInterkey(privateKey, password);
             Console.WriteLine("\n\nHere is the interkey you need to copy and give to the bot:");
             Console.WriteLine(interkey);
             Console.WriteLine("Enter to quit");
@@ -44,12 +44,12 @@ namespace InterkeyGenerator
             Environment.Exit(0);
         }
 
-        static string GenerateInterkey(string publicKey, string password)
+        static string GenerateInterkey(string privateKey, string password)
         {
-            char[] splitupKey = publicKey.ToCharArray();
-            if (password.Length <= publicKey.Length)
+            char[] splitupKey = privateKey.ToCharArray();
+            if (password.Length <= privateKey.Length)
             {
-                int[] permList = RandomUniqueList(publicKey.Length, password.Length, password);
+                int[] permList = RandomUniqueList(privateKey.Length, password.Length, password);
                 for (int i = 0; i < password.Length; i++)
                 {
                     splitupKey[permList[i]] = (char)((int)splitupKey[permList[i]] + (int)password[i]);
@@ -57,8 +57,8 @@ namespace InterkeyGenerator
             }
             else
             {
-                int[] permList = RandomUniqueList(password.Length, publicKey.Length, password);
-                for (int i = 0; i < publicKey.Length; i++)
+                int[] permList = RandomUniqueList(password.Length, privateKey.Length, password);
+                for (int i = 0; i < privateKey.Length; i++)
                 {
                     splitupKey[i] = (char)((int)splitupKey[i] + (int)password[permList[i]]);
                 }
