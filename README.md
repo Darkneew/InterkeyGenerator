@@ -4,7 +4,7 @@ Code used by the convex bot to generate interkeys.
 
 ### How to use?
 
-1. Download the compiled code [here](https://drive.google.com/file/d/1ocYoZL6BPPt9vuxoWFgHmTW_4vI0zbeI/view?usp=sharing)
+1. Download the compiled code [here](https://drive.google.com/file/d/16uujXLUbXEJnfXCjOzeN0BYSUW81u2Yn/view?usp=sharing)
 2. Unzip the file, and launch InterkeyGenerator.exe
 3. Follow the instructions given by the console
 4. Copy the interkey given and paste it on discord
